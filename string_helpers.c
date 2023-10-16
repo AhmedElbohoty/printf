@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * _strlen - returns the length of a string
@@ -10,10 +11,8 @@ int _strlen(char *s)
 {
 	int len = 0;
 
-	if (*s == '\0')
-		return (len);
-
-	len = 1 + _strlen(s + 1);
+	while (s[len++] != '\0')
+		len++;
 
 	return (len);
 }
@@ -29,7 +28,7 @@ int format_str(char *str)
 	int len;
 
 	len = _strlen(str);
-	write(1, &str, len);
+	write(1, str, len);
 
 	return (len);
 }
