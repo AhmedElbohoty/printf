@@ -1,4 +1,4 @@
-#include "main.h"
+#include <unistd.h>
 
 /**
  * _strlen - returns the length of a string
@@ -19,25 +19,6 @@ int _strlen(char *s)
 }
 
 /**
- * print_string - prints string
- * @str: The string
- *
- * Return: the pointer to string
- */
-char *print_string(char *str)
-{
-	int i = 0;
-
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
-
-	return (str);
-}
-
-/**
  * format_str - format string
  * @str: The string
  *
@@ -45,13 +26,10 @@ char *print_string(char *str)
  */
 int format_str(char *str)
 {
-	int i = 0;
+	int len;
 
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
+	len = _strlen(str);
+	write(1, &str, len);
 
-	return (i + 1);
+	return (len);
 }
