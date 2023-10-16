@@ -8,22 +8,22 @@
  */
 void print_number(int n)
 {
-    unsigned int i;
+	unsigned int i;
 
-    if (n < 0)
-    {
-        _putchar('-');
-        i = -n;
-    }
-    else
-    {
-        i = n;
-    }
+	if (n < 0)
+	{
+		_putchar('-');
+		i = -n;
+	}
+	else
+	{
+		i = n;
+	}
 
-    if (i / 10)
-        print_number(i / 10);
+	if (i / 10)
+		print_number(i / 10);
 
-    _putchar(i % 10 + '0');
+	_putchar(i % 10 + '0');
 }
 
 /**
@@ -34,12 +34,14 @@ void print_number(int n)
  */
 int digits_count(int n)
 {
-    int count = 0;
-    while (n != 0)
-    {
-        n = n / 10;
-        count++;
-    }
+	int count = 0;
 
-    return (count);
+	while (n != 0)
+	{
+		n = n / 10;
+		count++;
+	}
+
+	return (count);
 }
+

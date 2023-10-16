@@ -28,7 +28,6 @@ int _printf(const char *format, ...)
 			c = format[i + 1];
 			if (c == 'c')
 				_putchar(va_arg(ap, int));
-
 			if (c == 'i' || c == 'd')
 			{
 				d = va_arg(ap, int);
@@ -41,7 +40,6 @@ int _printf(const char *format, ...)
 
 			if (c == '%')
 				_putchar('%');
-
 			i++;
 		}
 		else
@@ -56,3 +54,4 @@ int _printf(const char *format, ...)
 
 	return (len);
 }
+
