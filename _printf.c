@@ -14,7 +14,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int c, char_count = 0;
+	int ch, char_count = 0;
 	va_list args;
 
 	if (format == NULL)
@@ -31,18 +31,22 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-
 			if (*format == '\0')
 				break;
 
 			if (*format == 'c')
 			{
-				c = va_arg(args, int);
-				write(1, &c, 1);
+				ch = va_arg(args, int);
+				write(1, &ch, 1);
 				char_count++;
 			}
 			else if (*format == 's')
 				char_count += format_str(va_arg(args, char *));
+			else if (*format == '%')
+			{
+				write(1, format, 1);
+				char_count++;
+			}
 		}
 		format++;
 	}
