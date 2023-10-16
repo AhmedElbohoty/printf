@@ -13,7 +13,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, len = 0;
+	int i = 0, len = 0, d;
 	char c;
 	va_list ap;
 
@@ -30,10 +30,14 @@ int _printf(const char *format, ...)
 				_putchar(va_arg(ap, int));
 
 			if (c == 'i' || c == 'd')
-				print_number(va_arg(ap, int));
+			{
+				d = va_arg(ap, int);
+				len += digits_count(d);
+				print_number(d);
+			}
 
 			if (c == 's')
-				len += format_str(va_arg(ap, char *)) - 1;
+				len += format_str(va_arg(ap, char *));
 
 			if (c == '%')
 				_putchar('%');
@@ -41,9 +45,11 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		else
+		{
 			_putchar(format[i]);
+			len++;
+		}
 
-		len++;
 		i++;
 	}
 	va_end(ap);
