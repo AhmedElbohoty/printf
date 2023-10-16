@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "main.h"
+#include <unistd.h>
 
 /**
  * _printf - Produces output according to a format
@@ -13,42 +14,37 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, char_count = 0, d;
-	char c;
+	int c, char_count = 0;
 	va_list args;
 
 	if (format == NULL)
-		return (1);
+		return (-1);
 
 	va_start(args, format);
-	while (format[i] != '\0')
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format != '%')
 		{
-			c = format[i + 1];
-			if (c == 'c')
-				_putchar(va_arg(args, int));
-			if (c == 'i' || c == 'd')
-			{
-				d = va_arg(args, int);
-				char_count += digits_count(d);
-				print_number(d);
-			}
-
-			if (c == 's')
-				char_count += format_str(va_arg(args, char *));
-
-			if (c == '%')
-				_putchar('%');
-			i++;
+			write(1, format, 1);
+			char_count++;
 		}
 		else
 		{
-			_putchar(format[i]);
-			char_count++;
-		}
+			format++;
 
-		i++;
+			if (*format == '\0')
+				break;
+
+			if (*format == 'c')
+			{
+				c = va_arg(args, int);
+				write(1, &c, 1);
+				char_count++;
+			}
+			else if (*format == 's')
+				char_count += format_str(va_arg(args, char *));
+		}
+		format++;
 	}
 	va_end(args);
 
