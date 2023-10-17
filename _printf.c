@@ -37,6 +37,8 @@ int _printf(const char *format, ...)
 				count += print_str(va_arg(args, char *));
 			else if (*format == 'i')
 				count += print_int(va_arg(args, int));
+			else if (*format == 'd')
+				count += print_int(va_arg(args, int));
 			else if (*format == '%')
 			{
 				write(1, format, 1);
