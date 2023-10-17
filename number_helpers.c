@@ -56,7 +56,7 @@ int digits_count(int n)
 int print_int(int numb)
 {
 	char buff[32];
-	int len = 0, i = 0;
+	int len = 0, i = 0, j;
 
 	if (numb < 0)
 	{
@@ -72,7 +72,8 @@ int print_int(int numb)
 		len++;
 	} while (numb > 0);
 
-	write(1, &buff, len);
+	for (j = i - 1; j >= 0; j--)
+		write(1, &buff[j], 1);
 
 	return (len);
 }
