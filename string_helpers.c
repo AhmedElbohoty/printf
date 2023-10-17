@@ -32,3 +32,16 @@ int format_str(char *str)
 
 	return (len);
 }
+
+/**
+ * format_char - format character
+ * @c: The character
+ *
+ * Return: character length
+ */
+int format_char(int c)
+{
+	write(1, &c, 1);
+
+	return (1);
+}

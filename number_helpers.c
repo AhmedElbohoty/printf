@@ -45,3 +45,15 @@ int digits_count(int n)
 	return (count);
 }
 
+/**
+ * format_integer - format integer
+ * @i: The integer
+ *
+ * Return: integer length
+ */
+int format_integer(int i)
+{
+	print_number(i);
+
+	return (digits_count(i));
+}

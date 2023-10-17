@@ -7,5 +7,7 @@ int _strlen(char *s);
 void print_number(int n);
 int format_str(char *str);
 int digits_count(int n);
+int format_char(int c);
+int format_integer(int i);
 
 #endif /* #ifndef MAIN_HEADER */
