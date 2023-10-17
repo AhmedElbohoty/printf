@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <unistd.h>
 
 /**
@@ -55,11 +56,11 @@ int digits_count(int n)
 int print_int(int numb)
 {
 	char buff[32];
-	int len = 0, i = 0, j;
+	int len = 0, i = 0;
 
 	if (numb < 0)
 	{
-		write(1, '-', 1);
+		write(1, "-", 1);
 		len++;
 		numb = -numb;
 	}
@@ -71,10 +72,7 @@ int print_int(int numb)
 		len++;
 	} while (numb > 0);
 
-	for (j = i - 1; j >= 0; j--)
-	{
-		write(1, buff[j], 1);
-	}
+	write(1, &buff, len);
 
-	return len;
+	return (len);
 }
