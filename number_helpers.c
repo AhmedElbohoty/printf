@@ -65,8 +65,7 @@ int print_int(int numb)
 		numb = -numb;
 	}
 
-	do
-	{
+	do {
 		buff[i++] = '0' + (numb % 10);
 		numb /= 10;
 		len++;
@@ -77,3 +76,4 @@ int print_int(int numb)
 
 	return (len);
 }
+
