@@ -18,12 +18,12 @@ int _strlen(char *s)
 }
 
 /**
- * format_str - format string
+ * print_str - format string
  * @str: The string
  *
  * Return: string length
  */
-int format_str(char *str)
+int print_str(char *str)
 {
 	int len;
 
@@ -34,12 +34,12 @@ int format_str(char *str)
 }
 
 /**
- * format_char - format character
+ * print_char - format character
  * @c: The character
  *
  * Return: character length
  */
-int format_char(int c)
+int print_char(int c)
 {
 	write(1, &c, 1);
 

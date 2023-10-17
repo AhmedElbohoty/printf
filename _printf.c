@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "main.h"
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * _printf - Produces output according to a format
@@ -31,11 +32,11 @@ int _printf(const char *format, ...)
 				break;
 
 			if (*format == 'c')
-				count += format_char(va_arg(args, int));
+				count += print_char(va_arg(args, int));
 			else if (*format == 's')
-				count += format_str(va_arg(args, char *));
+				count += print_str(va_arg(args, char *));
 			else if (*format == 'i')
-				count += format_integer(va_arg(args, int));
+				count += print_int(va_arg(args, int));
 			else if (*format == '%')
 			{
 				write(1, format, 1);

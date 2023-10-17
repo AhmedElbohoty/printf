@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
  * print_number - prints long integer using putchar
@@ -46,14 +47,34 @@ int digits_count(int n)
 }
 
 /**
- * format_integer - format integer
- * @i: The integer
+ * print_int - format integer
+ * @numb: The integer
  *
  * Return: integer length
  */
-int format_integer(int i)
+int print_int(int numb)
 {
-	print_number(i);
+	char buff[32];
+	int len = 0, i = 0, j;
 
-	return (digits_count(i));
+	if (numb < 0)
+	{
+		write(1, '-', 1);
+		len++;
+		numb = -numb;
+	}
+
+	do
+	{
+		buff[i++] = '0' + (numb % 10);
+		numb /= 10;
+		len++;
+	} while (numb > 0);
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		write(1, buff[j], 1);
+	}
+
+	return len;
 }
