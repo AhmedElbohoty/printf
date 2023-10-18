@@ -15,34 +15,32 @@
  */
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int count = 0, j = 4;
 	va_list args;
-
-	if (format == NULL)
-		return (-1);
+	formatter f[] = {
+		{"%c", print_char}, {"%s", print_str}, {"%i", print_int},
+		{"%d", print_int}, {"%b", print_binary}};
 
 	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
 	while (*format)
 	{
-
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '\0')
-				break;
-
-			if (*format == 'c')
-				count += print_char(va_arg(args, int));
-			else if (*format == 's')
-				count += print_str(va_arg(args, char *));
-			else if (*format == 'i')
-				count += print_int(va_arg(args, int));
-			else if (*format == 'd')
-				count += print_int(va_arg(args, int));
-			else if (*format == '%')
+			if (*format == '%')
 			{
 				write(1, format, 1);
 				count++;
+			}
+
+			while (j >= 0)
+			{
+				if (f[j].sp[1] == *format)
+					count += f[j].func(args);
+				j--;
 			}
 		}
 		else
@@ -53,6 +51,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-
 	return (count);
 }

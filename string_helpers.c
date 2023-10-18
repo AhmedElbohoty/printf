@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <stdarg.h>
 
 /**
  * _strlen - returns the length of a string
@@ -19,13 +20,19 @@ int _strlen(char *s)
 
 /**
  * print_str - format string
- * @str: The string
+ * @args: arguments
  *
  * Return: string length
  */
-int print_str(char *str)
+int print_str(va_list args)
 {
 	int len;
+	char *str;
+
+	str = va_arg(args, char *);
+
+	if (str == NULL)
+		str = "(null)";
 
 	len = _strlen(str);
 	write(1, str, len);
@@ -35,12 +42,16 @@ int print_str(char *str)
 
 /**
  * print_char - format character
- * @c: The character
+ * @args: arguments
  *
  * Return: character length
  */
-int print_char(int c)
+int print_char(va_list args)
 {
+	char c = va_arg(args, int);
+
+	printf("AAA %c\n", c);
+
 	write(1, &c, 1);
 
 	return (1);

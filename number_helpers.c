@@ -49,15 +49,16 @@ int digits_count(int n)
 
 /**
  * print_int - format integer
- * @numb: The integer
+ * @args: arguments
  *
  * Return: integer length
  */
-int print_int(int numb)
+int print_int(va_list args)
 {
 	char buff[32];
-	int len = 0, i = 0, j;
+	int len = 0, i = 0, j, numb;
 
+	numb = va_arg(args, int);
 	if (numb < 0)
 	{
 		write(1, "-", 1);
@@ -77,3 +78,36 @@ int print_int(int numb)
 	return (len);
 }
 
+/**
+ * print_binary - convert integer to binary and print it.
+ * @args: arguments
+ *
+ * Return: integer length
+ */
+int print_binary(va_list args)
+{
+	int buff[32], i = 0, j, numb;
+
+	numb = va_arg(args, int);
+	if (numb == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+
+	while (numb > 0)
+	{
+		buff[i++] = numb % 2;
+		numb /= 2;
+	}
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		if (buff[j] == 0)
+			write(1, "0", 1);
+		else
+			write(1, "1", 1);
+	}
+
+	return (i);
+}
