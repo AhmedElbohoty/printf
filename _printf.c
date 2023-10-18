@@ -36,6 +36,7 @@ int _printf(const char *format, ...)
 				count++;
 			}
 
+			j = 4;
 			while (j >= 0)
 			{
 				if (f[j].sp[1] == *format)
