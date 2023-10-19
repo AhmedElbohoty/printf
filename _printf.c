@@ -30,6 +30,8 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (handle_unkown_sp(*format) == -1)
+				return (-1);
 			if (*format == '%')
 			{
 				write(1, format, 1);
