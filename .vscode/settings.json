@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.svg": "html",
-    "main.h": "c"
+    "main.h": "c",
+    "string.h": "c"
   }
 }

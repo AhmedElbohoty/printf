@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 		{"%d", print_int}, {"%b", print_binary}};
 
 	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' &&
+				(format[1] == '\0' || format[1] == ' ')))
 		return (-1);
 
 	while (*format)
