@@ -15,11 +15,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int count = 0, j = 4;
+	int count = 0, j = 5;
 	va_list args;
 	formatter f[] = {
 		{"%c", print_char}, {"%s", print_str}, {"%i", print_int},
-		{"%d", print_int}, {"%b", print_binary}};
+		{"%d", print_int}, {"%b", print_binary}, {"%x", print_hex}};
 
 	va_start(args, format);
 	if (format == NULL)
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 				count++;
 			}
 
-			j = 4;
+			j = 5;
 			while (j >= 0)
 			{
 				if (f[j].sp[1] == *format)

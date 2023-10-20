@@ -29,25 +29,6 @@ void print_number(int n)
 }
 
 /**
- * digits_count - count the number of digits
- * @n: The number
- *
- * Return: the number of digits
- */
-int digits_count(int n)
-{
-	int count = 0;
-
-	while (n != 0)
-	{
-		n = n / 10;
-		count++;
-	}
-
-	return (count);
-}
-
-/**
  * print_int - format integer
  * @args: arguments
  *
@@ -66,7 +47,8 @@ int print_int(va_list args)
 		numb = -numb;
 	}
 
-	do {
+	do
+	{
 		buff[i++] = '0' + (numb % 10);
 		numb /= 10;
 		len++;
@@ -82,7 +64,7 @@ int print_int(va_list args)
  * print_binary - convert integer to binary and print it.
  * @args: arguments
  *
- * Return: integer length
+ * Return: binary length
  */
 int print_binary(va_list args)
 {
@@ -110,4 +92,38 @@ int print_binary(va_list args)
 	}
 
 	return (i);
+}
+
+/**
+ * print_hex - convert integer to hexadecimal and print it.
+ * @args: arguments
+ *
+ * Return: hexadecimal length
+ */
+int print_hex(va_list args)
+{
+	char buff[100], c;
+	unsigned int q, r, d;
+	int i, j = 0;
+
+	d = va_arg(args, unsigned int);
+
+	q = d;
+	while (q != 0)
+	{
+		r = q % 16;
+		if (r < 10)
+			buff[j++] = 48 + r;
+		else
+			buff[j++] = 55 + r;
+		q = q / 16;
+	}
+
+	for (i = j; i >= 0; i--)
+	{
+		c = buff[i];
+		write(1, &c, 1);
+	}
+
+	return (j);
 }

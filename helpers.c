@@ -26,3 +26,22 @@ int handle_unkown_sp(char sp)
 
 	return (0);
 }
+
+/**
+ * digits_count - count the number of digits
+ * @n: The number
+ *
+ * Return: the number of digits
+ */
+int digits_count(int n)
+{
+	int count = 0;
+
+	while (n != 0)
+	{
+		n = n / 10;
+		count++;
+	}
+
+	return (count);
+}
