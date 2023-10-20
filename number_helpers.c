@@ -47,8 +47,7 @@ int print_int(va_list args)
 		numb = -numb;
 	}
 
-	do
-	{
+	do {
 		buff[i++] = '0' + (numb % 10);
 		numb /= 10;
 		len++;

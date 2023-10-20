@@ -37,7 +37,6 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				count++;
 			}
-
 			j = 5;
 			while (j >= 0)
 			{
